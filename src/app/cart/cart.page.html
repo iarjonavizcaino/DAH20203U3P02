@@ -15,19 +15,15 @@
       <ion-label>Productos</ion-label>
     </ion-list-header>
 
-    <ion-item-group>
+    <ion-item-group *ngIf="cart">
       <ion-item-divider>
         <ion-label>En Carrito</ion-label>
         
       </ion-item-divider>
 
-      <ion-item lines="none">
-        <ion-label>Perro</ion-label>
-        <ion-badge color="primary" >$100.00</ion-badge>
-      </ion-item>
-      <ion-item lines="none">
-        <ion-label>Gato</ion-label>
-        <ion-badge color="primary" >$50.00</ion-badge>
+      <ion-item lines="none" *ngFor="let item of cart.products; index as i">
+        <ion-label>{{ item.name }}</ion-label>
+        <ion-badge color="primary" >{{ item.price | currency}}</ion-badge>
       </ion-item>
     
       <ion-item-divider>
@@ -36,15 +32,15 @@
 
       <ion-item lines="none">
         <ion-label>Subtotal</ion-label>
-        <ion-badge color="primary" >$150.00</ion-badge>
+        <ion-badge color="primary" >{{ cart.subtotal | currency}}</ion-badge>
       </ion-item>
       <ion-item lines="none">
         <ion-label>IVA</ion-label>
-        <ion-badge color="primary" >$24.00</ion-badge>
+        <ion-badge color="primary" >{{ cart.iva | currency}}</ion-badge>
       </ion-item>
       <ion-item lines="none">
         <ion-label>Total</ion-label>
-        <ion-badge color="primary" >$174.00</ion-badge>
+        <ion-badge color="primary" >{{ cart.total | currency}}</ion-badge>
       </ion-item>
       
     </ion-item-group>
