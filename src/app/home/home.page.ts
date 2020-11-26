@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Product } from '../models/product';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +9,10 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  public products: Product[];
+
+  constructor(private productService: ProductService) {
+    this.products = this.productService.getProducts();
+  }
 
 }
